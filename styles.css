@@ -1,0 +1,159 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: #f5f5f5;
+  color: #111;
+  min-height: 100vh;
+}
+
+#search-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 16px;
+}
+
+#search {
+  width: 100%;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+#search:focus {
+  border-color: #555;
+}
+
+#status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+#status.error {
+  color: #c0392b;
+}
+
+#count {
+  text-align: center;
+  padding: 8px 16px 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 4px;
+  padding: 12px 12px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid transparent;
+  transition:
+    background 0.1s,
+    border-color 0.1s;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cell:hover {
+  background: #f0f0f0;
+  border-color: #ddd;
+}
+
+.cell .emoji {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.cell .label {
+  font-size: 0.55rem;
+  color: #888;
+  text-align: center;
+  margin-top: 3px;
+  padding: 0 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.cell.copied {
+  background: #d4edda;
+  border-color: #28a745;
+}
+
+.cell .toast {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #28a745;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 4px;
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.cell.copied .toast {
+  opacity: 1;
+}
+
+.cell.copied .emoji {
+  opacity: 0;
+}
+
+.cell.copied .label {
+  opacity: 0;
+}
+
+#no-results {
+  display: none;
+  text-align: center;
+  padding: 60px 16px;
+  color: #999;
+  font-size: 1rem;
+}
+
+#no-results.visible {
+  display: block;
+}
